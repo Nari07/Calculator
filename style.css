@@ -1,0 +1,71 @@
+html {
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+    border: 1px red solid;
+  }
+  
+h1 {
+  text-align: center;
+}
+p1 {
+  display: flex;
+  justify-content: center;
+}
+
+#equal{
+  width: 80px;
+}
+
+input {
+  width: 40px;
+  height: 40px;
+}
+
+
+#calculatorBody {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 200px;
+    height: 300px;
+    gap: 5px;
+}
+#buttons {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+#rowOne {
+  display: flex;
+  flex-direction: row;
+ 
+}
+#rowTwo {
+  display: flex;
+  flex-direction: row;
+}
+#rowThree {
+  display: flex;
+  flex-direction: row;
+}
+#rowFour{
+  display: flex;
+  flex-direction: row;
+}
+
+#rowFive{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  max-width: 200px;
+}
+
+#displayBox{
+  height: 75px;
+  width: 160px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
