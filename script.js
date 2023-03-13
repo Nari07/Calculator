@@ -46,7 +46,7 @@ for (i = 0; i <buttons.length; i++){
 
 function displayValue(e){
   buttonVal = e.target.value;
-  displayBox.innerHTML = buttonVal;
+  displayBox.innerHTML = displayBox.textContent + buttonVal;
   console.log(buttonVal)
 }
 
