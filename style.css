@@ -3,7 +3,7 @@ html {
   }
   *, *:before, *:after {
     box-sizing: inherit;
-    border: 1px red solid;
+    /* border: 1px red solid; */
   }
   
 h1 {
@@ -31,6 +31,8 @@ input {
     width: 200px;
     height: 300px;
     gap: 5px;
+    border: 3px solid; 
+    border-radius: 10px;
 }
 #buttons {
   display: flex;
@@ -68,4 +70,6 @@ input {
   width: 160px;
   margin-top: 10px;
   margin-bottom: 5px;
+  border: 3px solid; 
+  border-radius: 5px;
 }

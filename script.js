@@ -1,6 +1,9 @@
-const buttons = document.querySelector('input');
+
+const buttons = document.getElementsByClassName('number');
 const displayBox = document.getElementById('displayBox');
-let buttonValue = document.querySelector('input').value;
+let buttonVal;
+
+console.log(buttons);
 
 function add(a, b){
 	let sum = 0;
@@ -37,11 +40,13 @@ function operate(operator, a, b){
   }
 }
 
-buttons.addEventListener('click', displayValue);
-
-function displayValue {
-  displayBox.innerHTML = buttonValue;
+for (i = 0; i <buttons.length; i++){
+  buttons[i].addEventListener('click', displayValue)
 }
 
-console.log(buttons);
-console.log(buttonValue);
+function displayValue(e){
+  buttonVal = e.target.value;
+  displayBox.innerHTML = buttonVal;
+  console.log(buttonVal)
+}
+
