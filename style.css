@@ -1,75 +1,89 @@
 html {
-    box-sizing: border-box;
-  }
-  *, *:before, *:after {
-    box-sizing: inherit;
-    /* border: 1px red solid; */
-  }
-  
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+  /* border: 1px red solid; */
+}
+
 h1 {
-  text-align: center;
+text-align: center;
 }
 p1 {
-  display: flex;
-  justify-content: center;
+display: flex;
+justify-content: center;
 }
 
 #equal{
-  width: 80px;
+width: 80px;
 }
 
 input {
-  width: 40px;
-  height: 40px;
+width: 40px;
+height: 40px;
 }
 
 
 #calculatorBody {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 200px;
-    height: 300px;
-    gap: 5px;
-    border: 3px solid; 
-    border-radius: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 200px;
+  height: 300px;
+  gap: 5px;
+  border: 3px solid; 
+  border-radius: 10px;
 }
 #buttons {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
+display: flex;
+flex-direction: column;
+margin-bottom: 10px;
 }
 
 #rowOne {
-  display: flex;
-  flex-direction: row;
- 
+display: flex;
+flex-direction: row;
+
 }
 #rowTwo {
-  display: flex;
-  flex-direction: row;
+display: flex;
+flex-direction: row;
 }
 #rowThree {
-  display: flex;
-  flex-direction: row;
+display: flex;
+flex-direction: row;
 }
 #rowFour{
-  display: flex;
-  flex-direction: row;
+display: flex;
+flex-direction: row;
 }
 
 #rowFive{
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  max-width: 200px;
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+max-width: 200px;
 }
 
 #displayBox{
-  height: 75px;
-  width: 160px;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  border: 3px solid; 
-  border-radius: 5px;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+gap: 8px;
+height: 75px;
+width: 160px;
+margin-top: 10px;
+margin-bottom: 5px;
+border: 3px solid; 
+border-radius: 5px;
+}
+#displayCalculation{
+display: flex;
+justify-content: flex-end;
+}
+
+#displayInput{
+display: flex;
+justify-content: flex-end;
+font-size: x-large;
 }
