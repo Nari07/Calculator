@@ -16,7 +16,6 @@ let equalClicked;
 let arr = [];
 
 
-
 //Displayed numbers
 for (i = 0; i <buttons.length; i++){
   buttons[i].addEventListener('click', displayValue)
@@ -28,20 +27,24 @@ function displayValue(e){
   displayInput.innerHTML =  displayInput.textContent + displayVal;//
 }
 
-for (i = 0; i <operators.length; i++){
-  operators[i].addEventListener('click', getInput)
-}
 
-for (i = 0; i <operators.length; i++){
-  operators[i].addEventListener('click', operate)
-}
 
-function getInput(){
+function getInput(operation){
 	input = Number(displayInput.innerHTML);
-  arr.push(input);
+  const objToPush = {number: input, operator: operation};
+  arr.push(objToPush);
   console.log(arr);
   return arr;
 }
+
+
+equal.addEventListener('click', function(){getInput('equals')} );
+equal.addEventListener('click', operate);
+equal.addEventListener('click', () => {
+		equalClicked = true;
+   	updateDisplay();
+})
+
 
 function clearDisplay(){
 	displayInput.innerHTML = '';
@@ -78,7 +81,9 @@ function add(a, b){
 }
 
 function subtract(a, b){
+  console.log(arr);
   arr.reduce((a, b) =>{
+    console.log
    	sum = a - b;
     return sum;
    }, 0)
@@ -110,33 +115,37 @@ function divide(a, b){
   return sum; */
 }
 
+
+for (i = 0; i <operators.length; i++){
+  operators[i].addEventListener('click', operate)
+}
+
 addButton.addEventListener('click', () => {
 	operatorChosen = 'add';
+  getInput(operatorChosen);
   clearDisplay()
   displayCalculation.innerHTML = displayCalculation.textContent + ' + ';
 });
 subtractButton.addEventListener('click', () => {
 	operatorChosen = 'subtract';
+  getInput(operatorChosen);
   clearDisplay();
   displayCalculation.innerHTML = displayCalculation.textContent + ' - ';
 });
 multiplyButton.addEventListener('click', () => {
 	operatorChosen = 'multiply';
+  getInput(operatorChosen);
   clearDisplay();
   displayCalculation.innerHTML = displayCalculation.textContent + ' x ';
 });
 divideButton.addEventListener('click', () => {
 	operatorChosen = 'divide';
+  getInput(operatorChosen);
   clearDisplay();
   displayCalculation.innerHTML = displayCalculation.textContent + ' ÷ ';
 });
 
-equal.addEventListener('click', getInput);
-equal.addEventListener('click', operate);
-equal.addEventListener('click', () => {
-		equalClicked = true;
-   	updateDisplay();
-})
+
 
 function operate(operator, a, b){
   operator = operatorChosen;
