@@ -23,46 +23,51 @@ for (i = 0; i <buttons.length; i++){
 
 function displayValue(e){
   displayVal = e.target.value;
-  displayCalculation.innerHTML = displayCalculation.textContent + displayVal;
-  displayInput.innerHTML =  displayInput.textContent + displayVal;//
+  if (equalClicked === true){
+  	clearDisplay();
+    displayCalculation.innerHTML = '';
+    displayCalculation.innerHTML = displayCalculation.textContent + displayVal;
+    displayInput.innerHTML =  displayInput.textContent + displayVal;
+    equalClicked = false;
+  } else {
+    displayCalculation.innerHTML = displayCalculation.textContent + displayVal;
+    displayInput.innerHTML =  displayInput.textContent + displayVal;
+  }
 }
 
-
+function clearDisplay(){
+	displayInput.innerHTML = '';
+}
 
 function getInput(operation){
-	input = Number(displayInput.innerHTML);
+  input = Number(displayInput.innerHTML);
   const objToPush = {number: input, operator: operation};
   arr.push(objToPush);
   console.log(arr);
   return arr;
 }
 
-
-equal.addEventListener('click', function(){getInput('equals')} );
-equal.addEventListener('click', operate);
-equal.addEventListener('click', () => {
-		equalClicked = true;
-   	updateDisplay();
-})
-
-
-function clearDisplay(){
-	displayInput.innerHTML = '';
-}
-
 function updateDisplay(){
 	if (equalClicked === true){
-     displayInput.innerHTML = sum
+     displayInput.innerHTML = sum;
      displayCalculation.innerHTML = displayCalculation.textContent + ' = ' + sum;
   } else {
   	displayInput.innerHTML = sum;
   }
 }
 
+equal.addEventListener('click', function(){getInput('equals')} );
+equal.addEventListener('click', getNumbers);
+equal.addEventListener('click', () => {
+		equalClicked = true;
+   	updateDisplay();
+})
+
 AC.addEventListener('click', () => {
 	clearDisplay();
   displayCalculation.innerHTML = '';
-  arr = [];
+  arr.length = 0;
+  sum = undefined;
 })
 
 /* for (i = 0; i <operators.length; i++){
@@ -71,53 +76,29 @@ AC.addEventListener('click', () => {
 
 //operators
 function add(a, b){
-	 arr.reduce((a, b) =>{
-   	sum = a + b;
-    return sum;
-   }, 0)
-   /*  a = input;
-    b = Number(displayInput.textContent);
-    sum = a + b; */
+  /*  a = input;
+   b = Number(displayInput.textContent); */
+   sum = a + b;
+   return sum;
 }
 
 function subtract(a, b){
-  console.log(arr);
-  arr.reduce((a, b) =>{
-    console.log
-   	sum = a - b;
-    return sum;
-   }, 0)
-  
-  /* a = input;
-  b = Number(displayInput.textContent);
+ /*  a = input;
+  b = Number(displayInput.textContent); */
   sum = (a - b);
-  return sum; */
+  return sum;
 }
 function multiply(a, b){
-  arr.reduce((a, b) =>{
-   	sum = a * b;
-    return sum;
-   }, 1)
-  /* a = input;
-  b = Number(displayInput.textContent);
+/*   a = input;
+  b = Number(displayInput.textContent); */
   sum = a * b;
-  return sum; */
+  return sum;
 }
 
 function divide(a, b){
-  arr.reduce((a, b) =>{
-   	sum = a / b;
-    return sum;
-   }, 1)
-  /* a = input;
-  b = Number(displayInput.textContent);
-  sum = a / b;
-  return sum; */
-}
-
-
-for (i = 0; i <operators.length; i++){
-  operators[i].addEventListener('click', operate)
+/*   a = input;
+  b = Number(displayInput.textContent); */
+  sum = Number((Math.round((a/b) * 100) / 100).toFixed(3)) // round to 3 decimal places
 }
 
 addButton.addEventListener('click', () => {
@@ -145,19 +126,34 @@ divideButton.addEventListener('click', () => {
   displayCalculation.innerHTML = displayCalculation.textContent + ' ÷ ';
 });
 
-
+// for (i = 0; i <operators.length; i++){
+//   operators[i].addEventListener('click', getNumbers)
+// }
 
 function operate(operator, a, b){
-  operator = operatorChosen;
   if (operator === 'subtract'){
-  	subtract(a, b);
+    subtract(a, b);
   } else if (operator === 'add'){
-  	add (a, b);
+    add (a, b);
   } else if (operator === 'divide'){
-  	divide(a, b);
+    divide(a, b);
   } else if (operator === 'multiply'){
-  	multiply(a, b);
+    multiply(a, b);
   }
 }
 
-
+function getNumbers(){
+  for (i = 0; i < arr.length - 1; i++){
+    operator = arr[i].operator;  
+    if (sum === undefined){
+    	a = arr[i].number;
+  		b = arr [i + 1].number;
+    } else {
+    	a = sum;
+      b = arr [i + 1].number;
+    }  
+    console.log(a, b, operator)
+    console.log(sum);
+    operate(operator, a, b);
+  }
+ }
