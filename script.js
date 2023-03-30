@@ -30,6 +30,7 @@ function displayValue(e){
     displayInput.innerHTML =  displayInput.textContent + displayVal;
     equalClicked = false;
   } else {
+    clearDisplay();
     displayCalculation.innerHTML = displayCalculation.textContent + displayVal;
     displayInput.innerHTML =  displayInput.textContent + displayVal;
   }

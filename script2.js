@@ -8,31 +8,33 @@ const subtractButton = document.getElementById('subtractButton');
 const AC = document.getElementById('AC');
 const equal = document.getElementById('equal');
 const operators = document.getElementsByClassName('operator');
-let sum;
+let sum = undefined;
+let input = undefined;
+let operatorChosen = undefined;
 let displayVal;
-let input;
-let operatorChosen;
 let equalClicked;
 let total; 
 
 
 //Displayed numbers
+
 for (i = 0; i <buttons.length; i++){
   buttons[i].addEventListener('click', displayValue)
 }
 
 function displayValue(e){
+  clearDisplay();
   displayVal = e.target.value;
-  if (equalClicked === true){
-  	clearDisplay();
-    displayCalculation.innerHTML = '';
+  // if (equalClicked === true && sum !== undefined){
+  // 	clearDisplay();
+  //   displayCalculation.innerHTML = '';
+  //   displayCalculation.innerHTML = displayCalculation.textContent +  displayVal;
+  //   displayInput.innerHTML =  displayInput.textContent + displayVal;
+  //   equalClicked = false;
+  // } else {
     displayCalculation.innerHTML = displayCalculation.textContent + displayVal;
     displayInput.innerHTML =  displayInput.textContent + displayVal;
-    equalClicked = false;
-  } else {
-    displayCalculation.innerHTML = displayCalculation.textContent + displayVal;
-    displayInput.innerHTML =  displayInput.textContent + displayVal;
-  }
+  
 }
 
 function clearDisplay(){
@@ -42,17 +44,19 @@ function clearDisplay(){
 
 function updateDisplay(){
 	if (equalClicked === true){
-     displayInput.innerHTML = sum;
-     displayCalculation.innerHTML = displayCalculation.textContent + ' = ' + sum;
+    displayInput.innerHTML = sum;
+    displayCalculation.innerHTML = displayCalculation.textContent + ' = ' + sum;
+    //equalClicked = false;
   }
 }
 
 AC.addEventListener('click', () => {
-    clearDisplay();
-    displayCalculation.innerHTML = '';
-    sum = undefined;
-    input = undefined;
-    operatorChosen = undefined;
+  clearDisplay();  
+  displayCalculation.innerHTML = '';
+  sum = undefined;
+  input = undefined;
+  operatorChosen = undefined;
+  equalClicked = false;
 })
 
 //Operators
@@ -60,7 +64,7 @@ function add(a, b){
    sum = a + b;
    return sum;
 }
-
+equalClicked = false;
 function subtract(a, b){
   sum = a - b;
   return sum;
@@ -78,11 +82,15 @@ function divide(a, b){
 addButton.addEventListener('click', () => {
   if(operatorChosen === undefined) {
     operatorChosen = 'add';
-  }
-  
+  }  
+
   clearDisplay();
-  displayCalculation.innerHTML = displayCalculation.textContent + ' + ';
-  
+
+  if (equalClicked === true){
+    input = 0;
+    equalClicked = false;
+  }
+
   if (sum === undefined){
     a = 0;
     b = input;
@@ -92,8 +100,11 @@ addButton.addEventListener('click', () => {
   }
   operate(operatorChosen, a, b);
   console.log("input: " + input);
+  console.log("a, b: " + a, b);
   console.log("total:" + sum);
-  operatorChosen = 'add';
+  displayCalculation.innerHTML = displayCalculation.textContent + ' + ';
+  displayInput.innerHTML = sum;
+  
 });
 
 subtractButton.addEventListener('click', () => {
@@ -102,6 +113,12 @@ subtractButton.addEventListener('click', () => {
   }
 
   clearDisplay();
+
+  if (equalClicked === true){
+    input = 0;
+    equalClicked = false;
+  }
+
   displayCalculation.innerHTML = displayCalculation.textContent + ' - ';
   if (sum  === undefined){
     a = input;
@@ -121,6 +138,12 @@ multiplyButton.addEventListener('click', () => {
     operatorChosen = 'multiply';
   }
   clearDisplay();
+
+  if (equalClicked === true){
+    input = 1;
+    equalClicked = false;
+  }
+
   displayCalculation.innerHTML = displayCalculation.textContent + ' x ';
   if (sum === undefined){
     a = 1;
@@ -131,6 +154,7 @@ multiplyButton.addEventListener('click', () => {
   }
   operate(operatorChosen, a, b);
   console.log("input: " + input);
+  console.log("a,b : " + a, b);
   console.log("total:" + sum);
   operatorChosen = 'multiply';
 
@@ -140,6 +164,12 @@ divideButton.addEventListener('click', () => {
     operatorChosen = 'divide';
   }
   clearDisplay();
+
+  if (equalClicked === true){
+    input = 1;
+    equalClicked = false;
+  }
+
   displayCalculation.innerHTML = displayCalculation.textContent + ' ÷ ';
   if (sum === undefined){
     a = input;
@@ -172,4 +202,5 @@ equal.addEventListener('click', () => {
   equalClicked = true;
   operate(operatorChosen, sum, input);
   updateDisplay();
+  operatorChosen = undefined;
 })
