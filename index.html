@@ -3,49 +3,50 @@
        <meta charset="UTF-8">
        <title>Calculator</title>
        <link rel="stylesheet" href="style.css">
+       
    </head>
    <body>
      <h1> Calculator </h1>
      <p1>
        <div id = "calculatorBody"> 
-       <div id = displayBox>
-          <div id="displayCalculation"></div>
-          <div id="displayInput"> </div>
-          <div id="sumBox"></div>
-       </div>
-          <div id="buttons">
-            <div id="rowOne">
-              <input type="button" id="AC" value ="AC"/>
-              <input type="button" id="Del" value ="Del"/>
-              <input type="button" id="percent" value ="%"/>
-              <input type="button" class= "operator" id="divideButton" value ="÷"/>
+        <div id = displayBox>
+            <div id="displayCalculation"></div>
+            <div id="displayInput"> </div>
+            <div id="sumBox"></div>
+        </div>
+            <div id="buttons">
+              <div id="rowOne">
+                <input type="button" id="AC" value ="AC" class = "other"/>
+                <input type="button" id="Del" value ="Del" class = "other"/>
+                <input type="button" class = "operator" id="percent" value ="%"/>
+                <input type="button" class= "operator" id="divideButton" value ="÷"/>
+              </div>
+              <div id="rowTwo">
+                <input type="button" class= "number" id="seven" value ="7"/>
+                <input type="button" class= "number" id="eight" value ="8"/>
+                <input type="button" class= "number" id="nine" value ="9"/>
+                <input type="button" class= "operator" id="multiplyButton" value ="x"/>
+              </div>
+              <div id="rowThree">
+                <input type="button" class= "number" id="four" value ="4"/>
+                <input type="button" class= "number" id="five" value ="5"/>
+                <input type="button" class= "number" id="six" value ="6"/>
+                <input type="button" class= "operator" id="addButton" value ="+"/>
+              </div>
+              <div id="rowFour">
+                <input type="button" class= "number" id="one" value ="1"/>
+                <input type="button" class= "number" id="two" value ="2"/>
+                <input type="button" class= "number" id="three" value ="3"/>
+                <input type="button" class= "operator" id="subtractButton" value ="-"/>
+                
+              </div>
+              <div id="rowFive">
+                <input type="button" class= "number" id="zero" value ="0"/>
+                <input type="button" id="decimal" value ="." class = "other"/>
+                <input type="button" id="equal" value ="=" class = "other"/>
+                
+              </div>
             </div>
-            <div id="rowTwo">
-              <input type="button" class= "number" id="seven" value ="7"/>
-              <input type="button" class= "number" id="eight" value ="8"/>
-              <input type="button" class= "number" id="nine" value ="9"/>
-              <input type="button" class= "operator" id="multiplyButton" value ="x"/>
-            </div>
-            <div id="rowThree">
-              <input type="button" class= "number" id="four" value ="4"/>
-              <input type="button" class= "number" id="five" value ="5"/>
-              <input type="button" class= "number" id="six" value ="6"/>
-              <input type="button" class= "operator" id="addButton" value ="+"/>
-            </div>
-            <div id="rowFour">
-              <input type="button" class= "number" id="one" value ="1"/>
-              <input type="button" class= "number" id="two" value ="2"/>
-              <input type="button" class= "number" id="three" value ="3"/>
-              <input type="button" class= "operator" id="subtractButton" value ="-"/>
-              
-            </div>
-            <div id="rowFive">
-              <input type="button" class= "number" id="zero" value ="0"/>
-              <input type="button" id="decimal" value ="."/>
-              <input type="button" id="equal" value ="="/>
-              
-            </div>
-          </div>
         </div>
      </p1>
    </body>
