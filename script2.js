@@ -10,12 +10,13 @@ const equal = document.getElementById('equal');
 const operators = document.getElementsByClassName('operator');
 const decimal = document.getElementById('decimal');
 const delButton = document.getElementById('Del');
+const sumBox = document.getElementById('sumBox');
+
 let sum 
 let input 
 let operatorChosen 
 let displayVal;
 let equalClicked;
-let total;
 let decimalClicked;
 
 
@@ -28,6 +29,7 @@ function displayValue(e){
   displayVal = e.target.value;
   displayCalculation.innerHTML = displayCalculation.textContent + displayVal;
   displayInput.innerHTML =  displayInput.textContent + displayVal;
+  sumBox.textContent = '';
 }   
 
 function clearDisplay(){
@@ -81,6 +83,7 @@ for (i = 0; i < operators.length; i++){
 AC.addEventListener('click', () => {
   clearDisplay();  
   displayCalculation.innerHTML = '';
+  sumBox.textContent = '';
   sum = undefined;
   input = undefined;
   operatorChosen = undefined;
@@ -110,26 +113,26 @@ delButton.addEventListener('click', () => {
 //Operators
 
 function add(a, b){
-   sum = a + b;
+   sum = Number((Math.round((a + b) * 100)/100).toFixed(3));;
    return sum;
 }
 equalClicked = false;
 function subtract(a, b){
-  sum = a - b;
+  sum = Number((Math.round((a - b) * 100)/100).toFixed(3));;
   return sum;
 }
 function multiply(a, b){
-  sum = a * b;
+  sum = Number((Math.round((a * b) * 100)/100).toFixed(3));
   return sum;
 }
 
 function divide(a, b){
-  sum = Number((Math.round((a/b) * 100) / 100).toFixed(3)) // round to 3 decimal places
+  sum = Number((Math.round((a/b) * 100) / 100).toFixed(3)); // round to 3 decimal places
   return sum;
 }
 
 addButton.addEventListener('click', () => {
-  if(operatorChosen === undefined) {
+  if(operatorChosen === undefined){
     operatorChosen = 'add';
   }  
 	
@@ -153,8 +156,7 @@ addButton.addEventListener('click', () => {
   console.log("a, b: " + a, b);
   console.log("total:" + sum);
   operatorChosen = 'add';
-  /* displayInput.textContent = '';
-  displayInput.innerHTML = sum; */
+  sumBox.textContent = sum;
   
 });
 
@@ -182,6 +184,7 @@ subtractButton.addEventListener('click', () => {
   console.log("input: " + input);
   console.log("total:" + sum);
   operatorChosen = 'subtract';
+  sumBox.textContent = sum;
 
 });
 multiplyButton.addEventListener('click', () => {
@@ -208,6 +211,7 @@ multiplyButton.addEventListener('click', () => {
   console.log("a,b : " + a, b);
   console.log("total:" + sum);
   operatorChosen = 'multiply';
+  sumBox.textContent = sum;
 
 });
 divideButton.addEventListener('click', () => {
@@ -233,6 +237,8 @@ divideButton.addEventListener('click', () => {
   console.log("input: " + input);
   console.log("total:" + sum);
 	operatorChosen = 'divide';
+  sumBox.textContent = sum;
+
 });
 
 function operate(operator, a, b){
