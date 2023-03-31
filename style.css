@@ -12,7 +12,7 @@ body{
   justify-content: center;
   align-items: center;
   height: fit-content;
-  background-color: rgba(182, 217, 206, 1);
+  background-color: rgb(194, 221, 217);
 }
 
 @font-face {
@@ -37,12 +37,12 @@ h1 {
   text-align: center;
   font-family: flower, Verdana, Geneva, Tahoma, sans-serif;
   font-weight: lighter;
-  font-size: 110px;
+  font-size: 120px;
   margin-bottom: 0px;
   color: rgb(255, 194, 74);
   -webkit-text-stroke-width: 0.3px;
-  -webkit-text-stroke-color: rgb(255, 255, 255);
-  margin-bottom: 10px;
+  -webkit-text-stroke-color:  white;
+  margin-bottom: 40px;
   
 
 }
@@ -175,6 +175,7 @@ input[type=button]:hover.number {
   min-height: 15px;
   font-family: Digital,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin-bottom: 20px;
+  color: rgb(75, 73, 73);
 }
 
 #displayInput{
@@ -183,10 +184,14 @@ input[type=button]:hover.number {
   justify-content: flex-start;
   font-size: 45px;
   font-family: Digital,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(75, 73, 73);
+
 }
 
 #sumBox{
   font-size: 45px;
   font-family: Digital,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   min-height: 0px;
+  color: rgb(75, 73, 73);
+
 }
