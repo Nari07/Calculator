@@ -26,8 +26,8 @@ body{
 
 @font-face {
   font-family: 'flower';
-  src: url(/fonts/StandingFlowerScriptPersonal.woff2) format('woff2'),
-      url(/fonts/StandingFlowerScriptPersonal.woff) format('woff');
+  src: url(fonts/StandingFlowerScriptPersonal.woff2) format('woff2'),
+      url(fonts/StandingFlowerScriptPersonal.woff) format('woff');
   font-weight: normal;
   font-style: italic;
   font-display: swap;
