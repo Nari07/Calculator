@@ -12,7 +12,7 @@ body{
   justify-content: center;
   align-items: center;
   height: fit-content;
-  background-color: rgba(175, 212, 214, 0.76);
+  background-color: rgba(182, 217, 206, 1);
 }
 
 @font-face {
@@ -37,34 +37,26 @@ h1 {
   text-align: center;
   font-family: flower, Verdana, Geneva, Tahoma, sans-serif;
   font-weight: lighter;
-  font-size: 100px;
+  font-size: 110px;
   margin-bottom: 0px;
+  color: rgb(255, 194, 74);
+  -webkit-text-stroke-width: 0.3px;
+  -webkit-text-stroke-color: rgb(255, 255, 255);
+  margin-bottom: 10px;
+  
+
 }
 p1 {
   display: flex;
   justify-content: center;
+  box-shadow: 3px 3px 3px rgba(156, 155, 155, 0.747);
+  border-radius: 10px;
 }
 
-#equal{
-  width: 110px;
-}
 
 input {
   width: 55px;
   height: 55px;
-}
-
-
-#calculatorBody {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 300px;
-  height: 430px;
-  gap: 5px;
-  border: 3px solid; 
-  border-radius: 10px;
-  background-color: rgba(214, 214, 214, 0.747);
 }
 
 #buttons {
@@ -77,39 +69,44 @@ input[type=button]{
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 8px;
+  border-color: rgba(255, 244, 240);
+  box-shadow: 1px 2px 2px #888888;
+  
 }
-
 input[type=button]:hover {
-  background-color:#b9b3b3;
+  background-color: #b9b3b3;
 }
-
 input[type=button]:hover#AC{
-  background-color:#635e5e73;
-
+  background-color: #635e5e73;
 }
 input[type=button]:hover#del{
-  background-color:#635e5e73;
-
+  background-color: #635e5e73;
 }
 input[type=button]:hover#equal{
-  background-color:#635e5e73;
-
+  background-color: #635e5e73;
 }
 
 input[type=button]:disabled{
   background-color: rgba(214, 214, 214, 0.747);
 }
-
-#AC{
-  background-color: rgb(235, 114, 214);
+input[type=button].number{
+  background-color: rgba(255, 244, 240);
+}
+input[type=button]:hover.number {
+  background-color: #b9b3b3;
 }
 
 #equal{
-  background-color: rgba(10, 161, 199, 0.39);
+  width: 110px;
+  background-color: rgba(15, 96, 107, 0.39);
 }
 
-#del{
-  background-color: rgb(132, 224, 194);
+#AC{
+  background-color: rgb(246, 114, 128);
+}
+
+#Del{
+  background-color: rgb(255, 194, 74);
 }
 
 .operator{
@@ -141,20 +138,37 @@ input[type=button]:disabled{
   max-width: 300px;
 }
 
+#calculatorBody {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 300px;
+  height: 435px;
+  gap: 5px;
+  border: 3px solid; 
+  border-radius: 10px;
+  background-color: rgba(214, 214, 214, 0.747);
+  border-color: rgba(15, 96, 107, 0.3);
+  box-shadow: inset 3px 6px 6px rgba(255,255,255,0.4); 
+  
+}
+
 #displayBox{
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: flex-end;
   height: 120px;
-  width: 230px;
+  width: 225px;
   margin-top: 15px;
   margin-bottom: 10px;
   border: 3px solid; 
   border-radius: 5px;
   background-color: rgba(247, 252, 252, 0.932);
-
+  border-color: rgba(15, 96, 107, 0.3);
+  box-shadow:  3px 6px 6px rgba(197, 194, 194, 0.644);  
 }
+
 #displayCalculation{
   display: flex;
   justify-content: flex-end;
@@ -167,12 +181,12 @@ input[type=button]:disabled{
   display: flex;
   align-content: flex-end;
   justify-content: flex-start;
-  font-size: 55px;
+  font-size: 45px;
   font-family: Digital,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #sumBox{
-  font-size: 55px;
+  font-size: 45px;
   font-family: Digital,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   min-height: 0px;
 }
