@@ -57,6 +57,7 @@ function updateDisplay(){
     displayCalculation.innerHTML = '';
     disableOperators();
     disableNumbers();
+    delButton.disabled = true;
   } 
 }
 
@@ -136,15 +137,6 @@ equal.addEventListener('click', () => {
   decimal.disabled = false;
 })
 
-function disableDel(){
-  if (equalClicked === true){
-    delButton.disabled = true;
-    equalClicked = false;
-  } else if (equalClicked === false){
-    delButton.disabled = false;
-  }
-}
-
 delButton.addEventListener('click', () => {
   if (equalClicked === true){
     delButton.disabled = true;
@@ -184,6 +176,7 @@ function divide(a, b){
   	 sum = 'ERROR';
      disableOperators();
      disableNumbers();
+     delButton.disabled = true;
   }
 }
 
