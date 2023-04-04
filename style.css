@@ -175,7 +175,9 @@ input[type=button]:hover.number {
   min-height: 15px;
   font-family: Digital,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin-bottom: 20px;
-  color: rgb(75, 73, 73);
+  color: rgb(117, 113, 113);
+  max-width: 215px;
+  overflow: hidden;
 }
 
 #displayInput{
@@ -184,7 +186,9 @@ input[type=button]:hover.number {
   justify-content: flex-start;
   font-size: 45px;
   font-family: Digital,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: rgb(75, 73, 73);
+  color: rgb(117, 113, 113);
+  overflow: hidden;
+  max-width: 220px;
 
 }
 

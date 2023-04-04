@@ -32,6 +32,10 @@ function displayValue(e){
   displayCalculation.innerHTML = displayCalculation.textContent + displayVal;
   displayInput.innerHTML =  displayInput.textContent + displayVal;
   sumBox.textContent = '';
+
+  if (equalClicked === false){
+    delButton.disabled = false;
+  }
 }   
 
 function clearDisplay(){
@@ -41,13 +45,19 @@ function clearDisplay(){
 
 
 function updateDisplay(){
-	if (equalClicked === true && sum !== undefined){
+  if (isNaN(sum) === true){
+    displayInput.innerHTML = 'ERROR';
+    disableOperators();
+    disableNumbers();
+  } else if (equalClicked === true && sum !== undefined){
     displayInput.innerHTML = sum;
     displayCalculation.innerHTML = displayCalculation.textContent + ' = ' + sum;
   } else if (equalClicked === true && sum === undefined){
   	displayInput.innerHTML = 'ERROR';
     displayCalculation.innerHTML = '';
-  }
+    disableOperators();
+    disableNumbers();
+  } 
 }
 
 function displaySum(){
@@ -57,8 +67,8 @@ function displaySum(){
 
 
 //other buttons
-percent.addEventListener('click', () =>{
-	sum = sum / 100;
+percent.addEventListener('click', () =>{  //FIX
+	sum = sum - (sum * 2);
   displayInput.innerHTML = sum;
 })
 
@@ -71,10 +81,22 @@ function disableDecimal(){
   }
 }
 
+function disableOperators(){
+	document.querySelectorAll('input[type="button"].operator').forEach(elem => {
+    elem.disabled = true;
+	});
+}
+
+function disableNumbers(){
+	document.querySelectorAll('input[type="button"].number').forEach(elem => {
+    elem.disabled = true;
+	});
+}
 decimal.addEventListener('click', () =>{
 	decimal.disabled = false;
   displayInput.innerHTML = displayInput.textContent + '.';
   displayCalculation.innerHTML = displayCalculation.textContent + '.';
+   sumBox.innerHTML = '';
   decimalClicked = true;
   disableDecimal();
 })
@@ -95,6 +117,13 @@ AC.addEventListener('click', () => {
   operatorChosen = undefined;
   equalClicked = false;
   decimal.disabled = false;
+  delButton.disabled = false
+  document.querySelectorAll('input[type="button"].operator').forEach(elem => {
+    elem.disabled = false;
+	});
+  document.querySelectorAll('input[type="button"].number').forEach(elem => {
+    elem.disabled = false;
+	});
 })
 
 equal.addEventListener('click', () => {
@@ -107,23 +136,37 @@ equal.addEventListener('click', () => {
   decimal.disabled = false;
 })
 
+function disableDel(){
+  if (equalClicked === true){
+    delButton.disabled = true;
+    equalClicked = false;
+  } else if (equalClicked === false){
+    delButton.disabled = false;
+  }
+}
+
 delButton.addEventListener('click', () => {
-   let inputString= displayInput.textContent.toString();
-   let result = inputString.slice(0, inputString.length - 1);
-   displayInput.innerHTML = Number(result);
-   
-   let calcString= displayCalculation.textContent.toString();
-   let result2 = calcString.slice(0, calcString.length - 1);
-   displayCalculation.textContent = result2;
+  if (equalClicked === true){
+    delButton.disabled = true;
+    equalClicked = false;
+  } else {
+    let inputString= displayInput.textContent.toString();
+    let result = inputString.slice(0, inputString.length - 1);
+    displayInput.innerHTML = Number(result);
+
+    let calcString= displayCalculation.textContent.toString();
+    let result2 = calcString.slice(0, calcString.length - 1);
+    displayCalculation.textContent = result2;
+  }
+  
 })
  
 //Operators
 
 function add(a, b){
-   sum = Number((Math.round((a + b) * 100)/100).toFixed(3));
-   return sum;
+    sum = Number((Math.round((a + b) * 100)/100).toFixed(3));
+    return sum;
 }
-equalClicked = false;
 function subtract(a, b){
   sum = Number((Math.round((a - b) * 100)/100).toFixed(3));
   return sum;
@@ -134,8 +177,14 @@ function multiply(a, b){
 }
 
 function divide(a, b){
-  sum = Number((Math.round((a/b) * 100) / 100).toFixed(3)); // round to 3 decimal places
-  return sum;
+  if (b !== 0){
+  	sum = Number((Math.round((a/b) * 100) / 100).toFixed(3));
+ 	  return sum;
+  } else if (b === 0){
+  	 sum = 'ERROR';
+     disableOperators();
+     disableNumbers();
+  }
 }
 
 addButton.addEventListener('click', () => {
@@ -153,7 +202,7 @@ addButton.addEventListener('click', () => {
   if (sum === undefined){
   	displayCalculation.innerHTML = displayCalculation.textContent + ' + ';
   } else {
-  		displayCalculation.innerHTML = 'ANS' + ' + ';
+  	displayCalculation.innerHTML = sum + ' + ';
   }
 
   if (sum === undefined){
@@ -183,7 +232,7 @@ subtractButton.addEventListener('click', () => {
   if (sum === undefined){
   	displayCalculation.innerHTML = displayCalculation.textContent + ' - ';
   } else {
-  		displayCalculation.innerHTML = 'ANS' + ' + ';
+  	displayCalculation.innerHTML = sum + ' + ';
   }
 
   if (sum  === undefined){
@@ -211,7 +260,7 @@ multiplyButton.addEventListener('click', () => {
   if (sum === undefined){
   	displayCalculation.innerHTML = displayCalculation.textContent + ' x ';
   } else {
-  		displayCalculation.innerHTML = 'ANS' + ' + ';
+  	displayCalculation.innerHTML = sum + ' + ';
   }
 
   if (sum === undefined){
@@ -240,7 +289,7 @@ divideButton.addEventListener('click', () => {
   if (sum === undefined){
   	displayCalculation.innerHTML = displayCalculation.textContent + ' ÷ ';
   } else {
-  		displayCalculation.innerHTML = 'ANS' + ' + ';
+  		displayCalculation.innerHTML = sum + ' + ';
   }
 
   if (sum === undefined){
