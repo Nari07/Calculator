@@ -225,7 +225,7 @@ subtractButton.addEventListener('click', () => {
   if (sum === undefined){
   	displayCalculation.innerHTML = displayCalculation.textContent + ' - ';
   } else {
-  	displayCalculation.innerHTML = sum + ' + ';
+  	displayCalculation.innerHTML = sum + ' - ';
   }
 
   if (sum  === undefined){
