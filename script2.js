@@ -11,8 +11,7 @@ const operators = document.getElementsByClassName('operator');
 const decimal = document.getElementById('decimal');
 const delButton = document.getElementById('Del');
 const sumBox = document.getElementById('sumBox');
-const percent = document.getElementById('percent');
-
+const negPos = document.getElementById('negPos');
 
 let sum 
 let input 
@@ -20,7 +19,6 @@ let operatorChosen
 let displayVal;
 let equalClicked;
 let decimalClicked;
-
 
 //Displayed numbers
 for (i = 0; i <buttons.length; i++){
@@ -61,16 +59,31 @@ function updateDisplay(){
   } 
 }
 
-function displaySum(){
-	displayInput.innerHTML = '';
-	displayInput.innerHTML = Number(sum);
-}
-
 
 //other buttons
-percent.addEventListener('click', () =>{  //FIX
-	sum = sum - (sum * 2);
-  displayInput.innerHTML = sum;
+negPos.addEventListener('click', () => {  //FIX
+  let result = Number(displayInput.innerHTML);
+  result = result * (-1);
+  displayInput.innerHTML = result;
+  if (equalClicked === true){
+    sum = result;
+  }
+
+  let calcString= displayCalculation.textContent.toString();
+  let inputString = displayInput.textContent.toString();
+
+  if (calcString[calcString.length - 1] == ')') { //if number is negative, remove parentheses and add result
+    let newStr = calcString.slice(0, calcString.length - (inputString.length + 3));
+    calcString = newStr + result;
+  }
+
+  let endString = calcString.slice(0, (calcString.length - inputString.length)); //if neg number, add ()
+  if ( Math.sign(result) === -1){
+    displayCalculation.innerHTML = endString + ' (' + result + ')';
+  } else {
+    displayCalculation.innerHTML = endString + result;
+  }
+  
 })
 
 function disableDecimal(){
@@ -93,6 +106,7 @@ function disableNumbers(){
     elem.disabled = true;
 	});
 }
+
 decimal.addEventListener('click', () =>{
 	decimal.disabled = false;
   displayInput.innerHTML = displayInput.textContent + '.';
@@ -134,6 +148,7 @@ equal.addEventListener('click', () => {
   updateDisplay();
   sumBox.innerHTML = '';
   operatorChosen = undefined;
+  delButton.disabled = true;
   decimal.disabled = false;
 })
 
@@ -253,7 +268,7 @@ multiplyButton.addEventListener('click', () => {
   if (sum === undefined){
   	displayCalculation.innerHTML = displayCalculation.textContent + ' x ';
   } else {
-  	displayCalculation.innerHTML = sum + ' + ';
+  	displayCalculation.innerHTML = sum + ' x ';
   }
 
   if (sum === undefined){
